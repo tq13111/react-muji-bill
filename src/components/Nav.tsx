@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from './Icon';
 
@@ -33,18 +33,18 @@ const Nav = () => {
       <ul>
         <li>
           <Icon name='detail'/>
-          <Link to='/detail'>明细</Link>
+          <NavLink activeClassName='active' className='item' to='/detail'>明细</NavLink>
         </li>
         <li>
           <Icon name='money'/>
-          <Link className='item' to='/'>记账</Link>
+          <NavLink activeClassName='active' className='item' to='/'>记账</NavLink>
         </li>
         <li>
           <Icon name='statistics'/>
-          <Link to='/statistics'>统计</Link>
+          <NavLink activeClassName='active' className='item' to='/statistics'>统计</NavLink>
         </li>
       </ul>
     </NavWrapper>
-  );
+  )
 };
 export default Nav;
