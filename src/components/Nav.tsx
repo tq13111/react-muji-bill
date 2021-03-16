@@ -13,17 +13,27 @@ const NavWrapper = styled.nav`
     > li {
       width: 33.333%;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
 
-      .icon {
-        width: 32px;
-        height: 32px;
-        color: #eee;
+      > a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > .icon {
+          width: 32px;
+          height: 32px;
+          fill: #333333;
+        }
+
+        &.active {
+          color: red;
+
+          .icon {
+            fill: red;
+          }
+        }
       }
-
     }
   }
 `;
@@ -32,19 +42,22 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-          <Icon name='detail'/>
-          <NavLink activeClassName='active' className='item' to='/detail'>明细</NavLink>
+          <NavLink activeClassName='active' className='item' to='/detail'>
+            <Icon name='detail'/>
+            明细</NavLink>
         </li>
         <li>
-          <Icon name='money'/>
-          <NavLink activeClassName='active' className='item' to='/'>记账</NavLink>
+          <NavLink activeClassName='active' className='item' to='/money'>
+            <Icon name='money'/>
+            记账</NavLink>
         </li>
         <li>
-          <Icon name='statistics'/>
-          <NavLink activeClassName='active' className='item' to='/statistics'>统计</NavLink>
+          <NavLink activeClassName='active' className='item' to='/statistics'>
+            <Icon name='statistics'/>
+            统计</NavLink>
         </li>
       </ul>
     </NavWrapper>
-  )
+  );
 };
 export default Nav;
