@@ -9,13 +9,12 @@ import recordTypeList from '../constants/recordTypeList';
 
 
 const Component = () => {
-  const [record, setRecord] = useState({
-    tag: '',
-    notes: '',
-    type: '-',
-    amount: 0,
-    createdAt: dayjs().format('YYYY-MM-DD')
-  });
+  const [type, setType] = useState('-');
+  const [tag, setTag] = useState('');
+  const [notes, setNotes] = useState('-');
+  const [amount, setAmount] = useState(0);
+  const createAt = useState(dayjs().format('YYYY-MM-DD'))[0];
+
   return (
     <Layout>
       {/*<Notes title='备注' placeholder='在这里输入备注'>*/}
@@ -24,8 +23,8 @@ const Component = () => {
       {/*         className="input2"*/}
       {/*         type="date">*/}
       {/*</Notes>*/}
-      <Tabs dataSource={recordTypeList} type={record.type} setType={setRecord}/>
-      <Tags type='-'/>
+      <Tabs dataSource={recordTypeList} type={type} setType={setType}/>
+      <Tags type={type}/>
     </Layout>
   );
 };

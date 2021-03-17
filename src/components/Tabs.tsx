@@ -39,15 +39,14 @@ type  Props = {
   dataSource: DataSource[]
 }
 const Tabs = (props: Props) => {
-
   return (
     <TabsWrapper>
       {props.dataSource.map((item) =>
         props.type === item.value ?
-          <li key={item.value} onClick={() => props.setType({type: item.value})}
+          <li key={item.value} onClick={() => props.setType(item.value)}
               className='selected'>{item.text}
           </li> :
-          <li key={item.value} onClick={() => props.setType({type: item.value})}>{item.text}
+          <li key={item.value} onClick={() => props.setType(item.value)}>{item.text}
           </li>
       )}
     </TabsWrapper>
