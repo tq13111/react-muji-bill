@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import dayjs from 'dayjs';
 import Layout from 'components/Layout';
-import Tags from '../components/Money/Tags';
-import Tabs from '../components/Tabs';
-import recordTypeList from '../constants/recordTypeList';
-
-// import Notes from '../components/Money/Notes';
+import Tags from 'components/Money/Tags';
+import Tabs from 'components/Tabs';
+import recordTypeList from 'constants/recordTypeList';
+import Notes from 'components/Money/Notes';
+import NumberPad from '../components/Money/NumberPad';
 
 
 const Component = () => {
@@ -19,12 +19,13 @@ const Component = () => {
     <Layout>
       {/*<Notes title='备注' placeholder='在这里输入备注'>*/}
       {/*  <input*/}
-      {/*         style={{width: '130px', marginRight: '16px', paddingLeft: '4px'}}*/}
-      {/*         className="input2"*/}
-      {/*         type="date">*/}
+      {/*    style={{width: '130px', marginRight: '16px', paddingLeft: '4px'}}*/}
+      {/*    className="input2"*/}
+      {/*    type="date"/>*/}
       {/*</Notes>*/}
       <Tabs dataSource={recordTypeList} type={type} setType={setType}/>
       <Tags type={type}/>
+      <NumberPad/>
     </Layout>
   );
 };
