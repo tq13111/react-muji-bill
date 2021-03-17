@@ -7,8 +7,6 @@ const TagsWrapper = styled.div`
   padding: 16px;
   display: flex;
   flex-grow: 1;
-  flex-direction: column;
-  justify-content: flex-end;
   background: #FFFFFF;
   height: 400px;
   overflow: auto;
@@ -18,15 +16,16 @@ const Content = styled.ul`
   flex-wrap: wrap;
   height: 100%;
   align-content: flex-start;
+
 `;
 const Item = styled.li`
-  $bg: #d9d9d9;
   width: 25%;
   height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   @media (min-width: 900px) {
     height: 25%;
   }

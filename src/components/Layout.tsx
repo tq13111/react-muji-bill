@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Nav from './Nav';
 import styled from 'styled-components';
 
@@ -13,11 +13,15 @@ const Wrapper = styled.div`
 `;
 const Main = styled.div`
   flex-grow: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
 `;
-
+const Height = document.documentElement.clientHeight;
 const Layout = (props: any) => {
+  const h = useState(Height);
   return (
-    <Wrapper>
+    <Wrapper style={{height: h + 'px'}}>
       <Main>
         {props.children}
       </Main>
