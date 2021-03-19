@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 const TabsWrapper = styled.ul`
   display: flex;
@@ -38,7 +39,7 @@ type  Props = {
   setType: Function,
   dataSource: DataSource[]
 }
-const Tabs = (props: Props) => {
+const Tabs: React.FC<Props> = (props) => {
   return (
     <TabsWrapper>
       {props.dataSource.map((item) =>

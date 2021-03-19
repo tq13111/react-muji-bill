@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Icon from '../Icon';
 import {expenditureTags, incomeagsTags} from 'constants/TagsList';
+import React from 'react';
 
 const TagsWrapper = styled.div`
   font-size: 14px;
@@ -33,6 +34,7 @@ const Item = styled.li`
   &.selected {
     color: white;
     //background: lighten($mainBackground, 40%);
+    background: pink;
     border-radius: 10%;
   }
 
@@ -43,17 +45,29 @@ const Item = styled.li`
   }
 `;
 type Props = {
-  type: string
+  type: string,
+  tag: string,
+  setTag: (x: string) => void
 }
-const Tags = (props: Props) => {
+const Tags: React.FC<Props> = (props) => {
 
   const tagList = props.type === '-' ? expenditureTags : incomeagsTags;
+
+
+  function selectTag(name: string) {
+    if (name === props.tag) {
+      props.setTag('');
+    } else {
+      props.setTag(name);
+    }
+  }
 
   return (
     <TagsWrapper>
       <Content>
         {tagList.map((tag) =>
-          <Item key={tag.iconName}>
+          <Item key={tag.iconName} onClick={() => selectTag(tag.name)}
+                className={props.tag === tag.name ? 'selected' : ''}>
             <Icon name={tag.iconName}/>
             <p>{tag.name}</p>
           </Item>

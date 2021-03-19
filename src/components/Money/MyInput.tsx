@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 
 const Label = styled.label`
@@ -36,17 +37,21 @@ const Input1 = styled.input`
 type Props = {
   title: string,
   placeholder: string,
-  children: HTMLInputElement
+  note: string,
+  setNote: (x: string) => void
 }
-const Notes = (props: Props) => {
+const MyInput: React.FC<Props> = (props) => {
   return (
     <Label className="input">
       <Title className="name">{props.title}</Title>
       <Input1 placeholder={props.placeholder}
-              type="text"/>
+              type="text"
+              value={props.note}
+              onChange={
+                (e) => props.setNote(e.target.value)}/>
       {props.children}
     </Label>
   );
 };
-export default Notes;
+export default MyInput;
 export {};

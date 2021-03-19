@@ -18,7 +18,7 @@ const Main = styled.div`
   flex-direction: column;
 `;
 const Height = document.documentElement.clientHeight;
-const Layout = (props: any) => {
+const Layout: React.FC = (props) => {
   const h = useState(Height);
   return (
     <Wrapper style={{height: h + 'px'}}>
