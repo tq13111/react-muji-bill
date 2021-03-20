@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Icon from './Icon';
 
 const NavWrapper = styled.nav`
-  border: 1px solid blue;
   line-height: 24px;
+  background: #555;
 
   > ul {
     display: flex;
@@ -19,18 +19,19 @@ const NavWrapper = styled.nav`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: white;
 
         > .icon {
           width: 32px;
           height: 32px;
-          fill: #333333;
+          color: white;
         }
 
         &.active {
-          color: red;
+          color: black;
 
           .icon {
-            fill: red;
+            color: black;
           }
         }
       }

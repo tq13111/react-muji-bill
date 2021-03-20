@@ -43,38 +43,35 @@ const Buttons = styled.div`
 
     &:nth-child(1) {
       //background: lighten(red, 4*6%)
-      background: #ccc;
+      background: #666;
     }
 
     &:nth-child(2), &:nth-child(5) {
       //background: lighten(red, 4*5%);
-      background: #ccc;
+      background: #555;
     }
 
     &:nth-child(3), &:nth-child(6), &:nth-child(9) {
       //background: lighten(red, 4*4%);
-      background: #ccc;
+      background: #444;
     }
 
-    &:nth-child(4), &:nth-child(7), &:nth-child(10), &:nth-child(13) {
-      //background: lighten(red, 4*3%);
-      background: #ccc;
+    &:nth-child(4), &:nth-child(7), &:nth-child(10), &:nth-child(12) {
+      background: #333;
     }
 
-    &:nth-child(8), &:nth-child(11), &:nth-child(14) {
-      //background: lighten(red, 4*2%);
-      background: #ccc;
+    &:nth-child(11), &:nth-child(13) {
+      background: #222;
     }
 
-    &:nth-child(15) {
-      //background: lighten(red, 4*1%);
-      background: #ccc;
+    &:nth-child(14), &:nth-child(15) {
+      background: #111;
     }
 
-    &:nth-child(12) {
-      //background: red;
-      background: #ccc;
+    &:nth-child(8) {
+      background: #000;
     }
+
 
     > .icon.remove {
       width: 1.5em;
