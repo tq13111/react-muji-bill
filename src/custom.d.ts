@@ -5,7 +5,7 @@ type RootState = {
 }
 type RecordItem = {
   note: string
-  type: string
+  type: '-' | '+'
   amount: number
   tag: string
   createdAt: string

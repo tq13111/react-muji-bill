@@ -1,6 +1,7 @@
 import createId from '../lib/createId';
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
+import clone from 'lib/clone';
 
 export const useRecordList = () => {
   const [recordList, setRecordList] = useState<RecordItem[]>([]);
@@ -26,13 +27,15 @@ export const useRecordList = () => {
       }
     }
     if (index >= 0) {
-      recordList.splice(index, 1);
+      const newValue = clone(recordList);
+      newValue.splice(index, 1);
+      setRecordList(newValue);
     } else {
       window.alert('删除失败');
     }
   }
 
-  return {createRecord, removeRecord};
+  return {createRecord, removeRecord, recordList};
 
 };
 

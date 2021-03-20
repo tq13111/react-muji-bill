@@ -10,7 +10,7 @@ import {useRecordList} from '../hooks/useRecordList';
 
 
 const Component: React.FC = () => {
-  const [type, setType] = useState('-');
+  const [type, setType] = useState<'-' | '+'>('-');
   const [tag, setTag] = useState('');
   const [note, setNote] = useState('');
   const [amount, setAmount] = useState(0);

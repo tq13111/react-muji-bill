@@ -37,11 +37,12 @@ type DataSource = {
 type  Props = {
   type: string,
   setType: Function,
-  dataSource: DataSource[]
+  dataSource: DataSource[],
+  className?: string
 }
 const Tabs: React.FC<Props> = (props) => {
   return (
-    <TabsWrapper>
+    <TabsWrapper className={props.className}>
       {props.dataSource.map((item) =>
         props.type === item.value ?
           <li key={item.value} onClick={() => props.setType(item.value)}

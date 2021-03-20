@@ -5,11 +5,12 @@ let importAll = (requireContext: __WebpackModuleApi.RequireContext) =>
 try {importAll(require.context('icons', true, /\.svg$/));}   // 目标文件夹
 catch (error) {console.log(error);}
 type  Props = {
-  name: string
+  name: string,
+  onClick?: () => void
 }
 const Icon = (props: Props) => {
   return (
-    <svg className={`icon ${props.name}`}>
+    <svg onClick={props.onClick} className={`icon ${props.name}`}>
       <use xlinkHref={'#' + props.name}/>
     </svg>
   );

@@ -1,6 +1,6 @@
 import Icon from '../Icon';
 import styled from 'styled-components';
-import {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const Output = styled.div`
   font-size: 26px;
@@ -26,10 +26,18 @@ const Buttons = styled.div`
     }
 
     &.ok {
-      height: 96px;
+      height: 120px;
       float: right;
       @media (min-height: 900px) {
-        height: 80px *2;
+        height: 100px *2;
+      }
+    }
+
+    &.remove {
+      height: 72px;
+      float: right;
+      @media (min-height: 900px) {
+        height: 60px *2;
       }
     }
 
@@ -67,33 +75,43 @@ const Buttons = styled.div`
       //background: red;
       background: #ccc;
     }
+
+    > .icon.remove {
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: -0.5em;
+      color: #eee;
+    }
+
+    > .icon.clear {
+      width: 2em;
+      height: 2em;
+      vertical-align: -0.5em;
+    }
   }
 `;
-const Remove = styled(Icon)`
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: -0.5em;
-  color: #eee;
-`;
-const Clear = styled(Icon)`
-  width: 2em;
-  height: 2em;
-  vertical-align: -0.5em;
-`;
-const Add = styled(Icon)`
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: -0.5em;
-`;
-const NumberPad = () => {
-  const [output, setOutput] = useState('0');
 
-  function calculation(e: any) {
+
+type  Props = {
+  amount: number
+  setAmount: (x: number) => void,
+  onSubmit: () => void
+}
+const NumberPad: React.FC<Props> = (props) => {
+  const [output, setOutput] = useState('0');
+  useEffect(() => {
+    props.setAmount((parseFloat(output)));
+  }, [output, props]);
+
+  function calculation(e: React.MouseEvent) {
     const button = (e.currentTarget as HTMLButtonElement);
     const input = button.textContent || button.value;
+    setOutput((output) => output.replace(/\+0+/, '+0').replace(/\.\+/, '+').replace(/\.+/g, '.').replace(/\++/, '+').replace(/\+\./, '+0.'));
     if (output.length >= 16) {return;}
     if (output === '0') {
-      if (input === '0') {return;} else if ('123456789'.indexOf(input) !== -1) {
+      if (input === '0') {
+        return;
+      } else if ('123456789'.indexOf(input) !== -1) {
         setOutput(input);
         return;
       }
@@ -101,35 +119,25 @@ const NumberPad = () => {
     if (input === '.' && output.match(/\+[0-9]+\.[0-9]+/)) {return;}
     if (input === '.' && output.match(/\./) && !output.match(/\+/)) {return;}
     if (output.indexOf('+') !== -1 && input === '+' && output.length >= 3) {
-      add();
+      console.log(output);
+      return;
     }
     setOutput(output + input);
-    setOutput(output.replace(/\+0+/, '+0').replace(/\.\+/, '+').replace(/\.+/g, '.').replace(/\++/, '+').replace(/\+\./, '+0.'));
-
-  }
-
-  function add() {
-    const array = output.split('+');
-    if (array[1] !== '') {
-      const number = (parseFloat(array[0]) * 100 + parseFloat(array[1]) * 100) / 100;
-      setOutput(number.toString());
-      if (output.length >= 16) {
-        setOutput('错误');
-        return;
-      }
-    }
   }
 
   function remove() {
-
+    setOutput(output.slice(0, -1));
+    if (output.length === 0) {setOutput('0'); }
   }
 
   function clear() {
-
+    setOutput('0');
   }
 
   function ok() {
-
+    setOutput(output.replace(/\.$|\+$/, ''));
+    props.onSubmit();
+    setOutput('0');
   }
 
   return (
@@ -139,25 +147,22 @@ const NumberPad = () => {
         <button onClick={calculation}>1</button>
         <button onClick={calculation}>2</button>
         <button onClick={calculation}>3</button>
-        <button onClick={remove}>
-          <Remove name='remove'/>
+        <button className="remove" onClick={remove}>
+          <Icon name='remove'/>
         </button>
         <button onClick={calculation}>4</button>
         <button onClick={calculation}>5</button>
         <button onClick={calculation}>6</button>
-        <button onClick={clear}>
-          <Clear name="clear"/>
-        </button>
+        <button className="ok" onClick={ok}>OK</button>
         <button onClick={calculation}>7</button>
         <button onClick={calculation}>8</button>
         <button onClick={calculation}>9</button>
-        <button className="ok" onClick={ok}>OK</button>
         <button className="zero" onClick={calculation}>0</button>
         <button value="." onClick={calculation}>
           <Icon name="point"/>
         </button>
-        <button value="+" onClick={calculation}>
-          <Add name="add"/>
+        <button value="+" onClick={clear}>
+          <Icon name="clear"/>
         </button>
       </Buttons>
     </div>
