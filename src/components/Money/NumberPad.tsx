@@ -119,7 +119,6 @@ const NumberPad: React.FC<Props> = (props) => {
     if (input === '.' && output.match(/\+[0-9]+\.[0-9]+/)) {return;}
     if (input === '.' && output.match(/\./) && !output.match(/\+/)) {return;}
     if (output.indexOf('+') !== -1 && input === '+' && output.length >= 3) {
-      console.log(output);
       return;
     }
     setOutput(output + input);

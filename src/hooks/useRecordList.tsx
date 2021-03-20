@@ -35,7 +35,7 @@ export const useRecordList = () => {
     }
   }
 
-  return {createRecord, removeRecord, recordList};
+  return {createRecord, removeRecord, recordList, setRecordList};
 
 };
 

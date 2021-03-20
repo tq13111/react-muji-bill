@@ -4,13 +4,12 @@ import dayjs from 'dayjs';
 
 const useDateList = () => {
   const {recordList, removeRecord} = useRecordList();
-  const newList = clone(recordList);
+  let newList = clone(recordList);
 
   const dayList = (type: string) => {
-    newList.filter(item => item.type === type)
+    newList = newList.filter(item => item.type === type)
       .sort((a, b) => dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf());
     if (newList.length === 0) {return [] as dayResult;}
-
     const result: dayResult = [{title: dayjs(newList[0].createdAt).format('YYYY-M-D'), items: [newList[0]]}];
     for (let i = 1; i < newList.length; i++) {
       const current = newList[i];
@@ -27,7 +26,7 @@ const useDateList = () => {
     return result;
   };
   const typeList = (type: string) => {
-    newList.filter(item => item.type === type);
+    newList = newList.filter(item => item.type === type);
     if (newList.length === 0) {return [];}
     const result: typeResult = [{tag: newList[0].tag, items: [newList[0]]}];
     for (let i = 1; i < newList.length; i++) {

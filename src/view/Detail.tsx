@@ -62,7 +62,6 @@ const NoResult = styled.div`
 const Component = () => {
   const [type, setType] = useState('-');
   const {dayList, beautify, remove} = useDateList();
-
   return (
     <Layout>
       <MyTabs dataSource={recordTypeList} type={type} setType={setType}/>
