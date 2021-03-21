@@ -33,9 +33,8 @@ const Item = styled.li`
 
   &.selected {
     color: white;
-    //background: lighten($mainBackground, 40%);
-    background: pink;
-    border-radius: 10%;
+    background: #ddd;
+    border-radius: 16px;
   }
 
   > .icon {
