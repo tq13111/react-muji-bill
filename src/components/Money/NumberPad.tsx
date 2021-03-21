@@ -29,7 +29,7 @@ const Buttons = styled.div`
       height: 120px;
       float: right;
       @media (min-height: 900px) {
-        height: 100px *2;
+        height: 200px;
       }
     }
 
@@ -37,7 +37,7 @@ const Buttons = styled.div`
       height: 72px;
       float: right;
       @media (min-height: 900px) {
-        height: 60px *2;
+        height: 120px;
       }
     }
 
